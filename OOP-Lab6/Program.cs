@@ -1,10 +1,41 @@
-﻿namespace OOP_Lab6
+﻿using OOP_Lab6.Utilities;
+using OOP_Lab6.CreationalPatternExample;
+
+namespace OOP_Lab6;
+
+class Program
 {
-	internal class Program
+	static readonly Dictionary<string, IClient> s_clients = new()
 	{
-		static void Main(string[] args)
+		["c"] = new CreationalPatternClient()
+	};
+
+	static IClient ChooseClient()
+	{
+		foreach (var (key, client) in s_clients)
 		{
-			Console.WriteLine("Hello, World!");
+			Console.WriteLine($"Enter {key} to choose {client.Name} client");
+		}
+		while (true)
+		{
+			Console.Write("> ");
+			string input = Console.ReadLine()!;
+			if (s_clients.TryGetValue(input, out var client))
+			{
+				Console.WriteLine();
+				return client;
+			}
+		}
+	}
+
+	static void Main()
+	{
+		while (true)
+		{
+			Console.Clear();
+
+			var client = ChooseClient();
+			client.Main();
 		}
 	}
 }
