@@ -2,6 +2,8 @@
 
 public interface IGuitarFactory
 {
+	string Name { get; }
+
 	IGuitar CreateGuitar();
 	IGuitarStrings CreateGuitarStrings();
 }

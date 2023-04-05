@@ -9,6 +9,8 @@ public class ClassicalGuitarFactory : GuitarFactory
 	{
 	}
 
+	public override string Name => "classical";
+
 	public override IGuitar CreateGuitar()
 		=> new ClassicalGuitar(_model, _pickupCount, _fretsCount, _stringsCount, _scaleLength);
 

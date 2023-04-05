@@ -9,6 +9,8 @@ public class ElectricGuitarFactory : GuitarFactory
 	{
 	}
 
+	public override string Name => "electric";
+
 	public override IGuitar CreateGuitar()
 		=> new ElectricGuitar(_model, _pickupCount, _fretsCount, _stringsCount, _scaleLength);
 

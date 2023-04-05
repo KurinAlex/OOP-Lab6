@@ -23,6 +23,8 @@ public abstract class GuitarFactory : IGuitarFactory
 		_lowGauge = lowGauge;
 	}
 
+	public abstract string Name { get; }
+
 	public abstract IGuitar CreateGuitar();
 	public abstract IGuitarStrings CreateGuitarStrings();
 }

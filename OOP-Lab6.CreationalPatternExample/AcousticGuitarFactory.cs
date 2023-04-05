@@ -9,6 +9,8 @@ public class AcousticGuitarFactory : GuitarFactory
 	{
 	}
 
+	public override string Name => "acoustic";
+
 	public override IGuitar CreateGuitar()
 		=> new AcousticGuitar(_model, _pickupCount, _fretsCount, _stringsCount, _scaleLength);
 

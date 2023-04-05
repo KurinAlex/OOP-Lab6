@@ -7,5 +7,5 @@ public class ElectricGuitar : Guitar
 	{
 	}
 
-	public override bool PutStrings(IGuitarStrings strings) => strings is ElectricGuitarStrings;
+	public override bool PutStrings(IGuitarStrings strings) => strings.Material == GuitarStringsMaterial.Nickel;
 }

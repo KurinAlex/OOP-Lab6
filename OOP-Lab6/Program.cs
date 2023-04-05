@@ -14,7 +14,7 @@ class Program
 	{
 		foreach (var (key, client) in s_clients)
 		{
-			Console.WriteLine($"Enter {key} to choose {client.Name} client");
+			Console.WriteLine($"Enter {key} to choose creational pattern ({client.Name}) client");
 		}
 		while (true)
 		{
@@ -32,10 +32,11 @@ class Program
 	{
 		while (true)
 		{
-			Console.Clear();
-
 			var client = ChooseClient();
 			client.Main();
+
+			Console.ReadLine();
+			Console.Clear();
 		}
 	}
 }

@@ -7,5 +7,5 @@ public class AcousticGuitar : Guitar
 	{
 	}
 
-	public override bool PutStrings(IGuitarStrings strings) => strings is AcousticGuitarStrings;
+	public override bool PutStrings(IGuitarStrings strings) => strings.Material == GuitarStringsMaterial.Bronze;
 }

@@ -7,5 +7,5 @@ public class ClassicalGuitar : Guitar
 	{
 	}
 
-	public override bool PutStrings(IGuitarStrings strings) => strings is ClassicalGuitarStrings;
+	public override bool PutStrings(IGuitarStrings strings) => strings.Material == GuitarStringsMaterial.Nylon;
 }

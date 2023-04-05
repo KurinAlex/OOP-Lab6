@@ -4,29 +4,29 @@ namespace OOP_Lab6.CreationalPatternExample;
 
 public class CreationalPatternClient : IClient
 {
-	private static readonly Dictionary<string, (string Name, IGuitarFactory Factory)> s_actions = new()
+	private static readonly Dictionary<string, IGuitarFactory> s_actions = new()
 	{
-		["a"] = ("acoustic", new AcousticGuitarFactory("HOHNER HW 220-TWR", 0, 20, 6, 25.59, 10, 50)),
-		["c"] = ("classical", new ClassicalGuitarFactory("YAMAHA C40", 0, 19, 6, 25.59, 28, 43)),
-		["e"] = ("electric", new ElectricGuitarFactory("YAMAHA ERG121U", 3, 22, 6, 25.5, 13, 65))
+		["a"] = new AcousticGuitarFactory("HOHNER HW 220-TWR", 0, 20, 6, 25.59, 10, 50),
+		["c"] = new ClassicalGuitarFactory("YAMAHA C40", 0, 19, 6, 25.59, 28, 43),
+		["e"] = new ElectricGuitarFactory("YAMAHA ERG121U", 3, 22, 6, 25.5, 13, 65)
 	};
 
-	public string Name => "creational pattern";
+	public string Name => "abstract factory";
 
 	private static IGuitarFactory CreateFactory()
 	{
-		foreach (var (key, (name, _)) in s_actions)
+		foreach (var (key, factory) in s_actions)
 		{
-			Console.WriteLine($"Enter {key} to create {name} guitar factory");
+			Console.WriteLine($"Enter {key} to create {factory.Name} guitar factory");
 		}
 		while (true)
 		{
 			Console.Write("> ");
 			string input = Console.ReadLine()!;
-			if (s_actions.TryGetValue(input, out var res))
+			if (s_actions.TryGetValue(input, out var factory))
 			{
 				Console.WriteLine();
-				return res.Factory;
+				return factory;
 			}
 		}
 	}
@@ -50,7 +50,5 @@ public class CreationalPatternClient : IClient
 		{
 			Console.WriteLine($"ERROR: Strings {guitarStrings} cannot be put on {guitar}");
 		}
-
-		Console.ReadLine();
 	}
 }
