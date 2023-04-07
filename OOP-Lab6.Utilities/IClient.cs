@@ -2,6 +2,7 @@
 
 public interface IClient
 {
-	string Name { get; }
+	string PatternType { get; }
+	string PatternName { get; }
 	void Main();
 }

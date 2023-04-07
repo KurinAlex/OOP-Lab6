@@ -1,0 +1,38 @@
+﻿namespace OOP_Lab6.BehavioralPatternExample;
+
+public class QuickSort : ISortingStrategy
+{
+	private static int Partition<T>(T[] array, int start, int end) where T : IComparable<T>
+	{
+		T pivot = array[start + (end - start) / 2];
+		int i = start;
+		int j = end;
+
+		while (true)
+		{
+			while (array[i].CompareTo(pivot) < 0)
+			{
+				i++;
+			}
+			while (array[j].CompareTo(pivot) > 0)
+			{
+				j--;
+			}
+			if (i >= j)
+			{
+				return j;
+			}
+			SortingHelper.Swap(array, i++, j--);
+		}
+	}
+
+	public void Sort<T>(T[] array, int start, int end) where T : IComparable<T>
+	{
+		if (start < end)
+		{
+			int p = Partition(array, start, end);
+			Sort(array, start, p);
+			Sort(array, p + 1, end);
+		}
+	}
+}
