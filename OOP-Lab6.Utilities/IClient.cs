@@ -4,5 +4,6 @@ public interface IClient
 {
 	string PatternType { get; }
 	string PatternName { get; }
+
 	void Main();
 }

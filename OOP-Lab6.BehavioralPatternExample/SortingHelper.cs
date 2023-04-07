@@ -1,6 +1,4 @@
-﻿using System.Net.Http.Headers;
-
-namespace OOP_Lab6.BehavioralPatternExample;
+﻿namespace OOP_Lab6.BehavioralPatternExample;
 
 public static class SortingHelper
 {

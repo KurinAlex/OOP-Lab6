@@ -16,7 +16,9 @@ class Program
 	{
 		while (true)
 		{
-			var client = InputHelper.MakeChoice(s_clients, c => $"to choose {c.PatternType} pattern ({c.PatternName}) client");
+			var client = InputHelper.MakeChoice(s_clients,
+				c => $"to choose {c.PatternType} pattern ({c.PatternName}) client");
+
 			client.Main();
 
 			Console.ReadLine();

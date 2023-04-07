@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using static OOP_Lab6.Utilities.InputHelper;
 
 namespace OOP_Lab6.Utilities;
 
