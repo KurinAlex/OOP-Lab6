@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\OOP-Lab6.BehavioralPatternExample\OOP-Lab6.BehavioralPatternExample.csproj" />
     <ProjectReference Include="..\OOP-Lab6.CreationalPatternExample\OOP-Lab6.CreationalPatternExample.csproj" />
+    <ProjectReference Include="..\OOP-Lab6.StructuralPatternExample\OOP-Lab6.StructuralPatternExample.csproj" />
     <ProjectReference Include="..\OOP-Lab6.Utilities\OOP-Lab6.Utilities.csproj" />
   </ItemGroup>
 
