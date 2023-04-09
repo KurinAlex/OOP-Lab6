@@ -1,6 +1,6 @@
 ﻿namespace OOP_Lab6.BehavioralPatternExample;
 
-public class QuickSort : ISortingStrategy
+public class QuickSort : SortingStrategy
 {
 	private static int Partition<T>(T[] array, int start, int end) where T : IComparable<T>
 	{
@@ -26,7 +26,7 @@ public class QuickSort : ISortingStrategy
 		}
 	}
 
-	public void Sort<T>(T[] array, int start, int end) where T : IComparable<T>
+	protected override void Sort<T>(T[] array, int start, int end)
 	{
 		if (start < end)
 		{

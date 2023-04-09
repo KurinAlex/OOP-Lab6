@@ -2,5 +2,5 @@
 
 public interface ISortingStrategy
 {
-	void Sort<T>(T[] array, int start, int end) where T : IComparable<T>;
+	void Sort<T>(T[] array) where T : IComparable<T>;
 }

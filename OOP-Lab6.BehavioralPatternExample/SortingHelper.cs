@@ -4,7 +4,9 @@ public static class SortingHelper
 {
 	public static void Swap<T>(T[] array, int i, int j) => (array[i], array[j]) = (array[j], array[i]);
 
-	public static bool IsSorted<T>(T[] array, int start, int end) where T : IComparable<T>
+	public static bool IsSorted<T>(T[] array) where T : IComparable<T> => IsSorted(array, 0, array.Length - 1);
+
+	private static bool IsSorted<T>(T[] array, int start, int end) where T : IComparable<T>
 	{
 		for (int i = start; i < end; i++)
 		{

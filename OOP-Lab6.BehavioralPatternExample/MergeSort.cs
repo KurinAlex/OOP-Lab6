@@ -1,6 +1,6 @@
 ﻿namespace OOP_Lab6.BehavioralPatternExample;
 
-public class MergeSort : ISortingStrategy
+public class MergeSort : SortingStrategy
 {
 	private static void Merge<T>(T[] array, int start, int middle, int end) where T : IComparable<T>
 	{
@@ -11,7 +11,7 @@ public class MergeSort : ISortingStrategy
 
 		while ((left <= middle) && (right <= end))
 		{
-			if (array[left].CompareTo(array[right]) < 0)
+			if (array[left].CompareTo(array[right]) <= 0)
 			{
 				tempArray[index] = array[left];
 				left++;
@@ -43,7 +43,7 @@ public class MergeSort : ISortingStrategy
 		}
 	}
 
-	public void Sort<T>(T[] array, int start, int end) where T : IComparable<T>
+	protected override void Sort<T>(T[] array, int start, int end)
 	{
 		if (start < end)
 		{

@@ -4,9 +4,9 @@ namespace OOP_Lab6.Utilities;
 
 public static class InputHelper
 {
-	public delegate bool TryParse<T>(string s, [MaybeNullWhen(false)] out T res);
+	public delegate bool TryParseHandler<T>(string s, [MaybeNullWhen(false)] out T res);
 
-	public static T MakeChoice<T>(Dictionary<string, T> data, Func<T, string> getOptionDescription)
+	public static T MakeChoice<T>(IDictionary<string, T> data, Func<T, string> getOptionDescription)
 	{
 		string message = string.Join(
 			Environment.NewLine,
@@ -14,10 +14,10 @@ public static class InputHelper
 		return GetInput<T>(message, data.TryGetValue);
 	}
 
-	public static int GetInt32Input(string name, Predicate<int>? conditions = null)
-		=> GetInput(name, int.TryParse, conditions);
+	public static int GetInt32Input(string name, Predicate<int>? condition = null)
+		=> GetInput(name, int.TryParse, condition);
 
-	private static T GetInput<T>(string name, TryParse<T> parser, Predicate<T>? conditions = null)
+	private static T GetInput<T>(string name, TryParseHandler<T> parse, Predicate<T>? condition = null)
 	{
 		Console.WriteLine($"Enter {name}");
 		T? res;
@@ -26,7 +26,7 @@ public static class InputHelper
 		{
 			Console.Write("> ");
 			input = Console.ReadLine()!;
-		} while (!parser(input, out res) || (conditions is not null && !conditions(res)));
+		} while (!parse(input, out res) || (condition is not null && !condition(res)));
 		Console.WriteLine();
 		return res;
 	}

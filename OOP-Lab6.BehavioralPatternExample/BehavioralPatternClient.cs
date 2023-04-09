@@ -21,19 +21,17 @@ public class BehavioralPatternClient : IClient
 		int count = InputHelper.GetInt32Input("array size", c => c > 0);
 		int min = InputHelper.GetInt32Input("min");
 		int max = InputHelper.GetInt32Input("max", max => max > min);
-		int start = InputHelper.GetInt32Input("start", s => 0 <= s && s < count);
-		int end = InputHelper.GetInt32Input("end", e => start <= e && e < count);
 
 		var array = SortingHelper.Generate(count, min, max);
 
 		var strategy = InputHelper.MakeChoice(s_sorts, t => $"if your array {t.Description}").Factory;
 
 		var stopwatch = Stopwatch.StartNew();
-		strategy.Sort(array, start, end);
+		strategy.Sort(array);
 		stopwatch.Stop();
 
 		Console.WriteLine($"Result: ");
-		Console.WriteLine($"-> is sorted: {SortingHelper.IsSorted(array, start, end)}");
+		Console.WriteLine($"-> is sorted: {SortingHelper.IsSorted(array)}");
 		Console.WriteLine($"-> elapsed time: {1000.0 / Stopwatch.Frequency * stopwatch.ElapsedTicks} ms");
 	}
 }

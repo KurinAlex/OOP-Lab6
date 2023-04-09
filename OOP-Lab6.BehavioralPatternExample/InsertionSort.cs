@@ -1,8 +1,8 @@
 ﻿namespace OOP_Lab6.BehavioralPatternExample;
 
-public class InsertionSort : ISortingStrategy
+public class InsertionSort : SortingStrategy
 {
-	public void Sort<T>(T[] array, int start, int end) where T : IComparable<T>
+	protected override void Sort<T>(T[] array, int start, int end)
 	{
 		for (int i = start; i < end; i++)
 		{
