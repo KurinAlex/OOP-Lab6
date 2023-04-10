@@ -11,11 +11,14 @@ public static class InputHelper
 		string message = string.Join(
 			Environment.NewLine,
 			data.Select(p => $"-> {p.Key} {getOptionDescription(p.Value)}").Prepend(string.Empty));
-		return GetInput<T>(message, data.TryGetValue);
+		return GetInput(message, (string k, [MaybeNullWhen(false)] out T v) => data.TryGetValue(k.ToLower(), out v));
 	}
 
 	public static int GetInt32Input(string name, Predicate<int>? condition = null)
 		=> GetInput(name, int.TryParse, condition);
+
+	public static char GetCharInput(string name, Predicate<char>? condition = null)
+		=> GetInput(name, char.TryParse, condition);
 
 	private static T GetInput<T>(string name, TryParseHandler<T> parse, Predicate<T>? condition = null)
 	{
